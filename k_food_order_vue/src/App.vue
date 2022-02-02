@@ -25,39 +25,49 @@
 
     <v-main class="grey lighten-1">
       <v-container class="overflow-x">
-        <v-row class="white">
-          <template v-for="category in CategoryAndProducts">
+        <template v-for="category in CategoryAndProducts">
             <v-col :key="category.id" cols="12" class="black">
               <strong class="white--text">Category: {{ category.name }}</strong>
             </v-col>
-            <v-col v-for="product in category.products" :key="product.id" cols="3">
+          <v-sheet class="mx-auto" elevation="8" max-width="1785">
+            <v-slide-group
+              class="pa-4"
+              active-class="success"
+              show-arrows
+            >
+              <v-slide-item
+                v-for="product in category.products"
+                :key="product.id"
+                v-slot="{ active, toggle }"
+              >
               <v-card class="pa-2" outlined tile>
-                <!-- <v-col v-for="product in hottestProducts" v-bind:key="product.id">-->
-                <div class="box">
-                  <p class="text-center">
-                    {{ product.name }} - {{ product.price }} EUR
-                  </p>
-                </div>
-                <figure class="text-center">
-                  <img :src="product.get_thumbnail" :class="`rounded-lg`" />
-                </figure>
+              <div class="box">
+                <p class="text-center">
+                  {{ product.name }} - {{ product.price }} EUR
+                </p>
+              </div>
+                <img
+                  img :src="product.get_thumbnail"
+                  class="`rounded-lg`"
+                  height="150"
+                  width="250"
+                >                
+                </img>
                 <div class="text-center">
-                  <v-btn class="mx-2" fab dark small color="primary">
-                    <v-icon dark> mdi-minus </v-icon>
-                  </v-btn>
-                  <v-btn class="mx-2" fab dark small color="indigo">
-                    <v-icon dark> mdi-plus </v-icon>
-                  </v-btn>
+                      <v-btn class="mx-2" fab dark small color="primary">
+                        <v-icon dark> mdi-minus </v-icon>
+                      </v-btn>
+                      <v-btn class="mx-2" fab dark small color="indigo">
+                        <v-icon dark> mdi-plus </v-icon>
+                      </v-btn>
                 </div>
               </v-card>
-            </v-col>
-          </template>
-        </v-row>
+              </v-slide-item>
+            </v-slide-group>
+          </v-sheet>
+        </template>
       </v-container>
     </v-main>
-
-
-
 
     <v-footer color="primary lighten-1" padless>
       <v-row justify="center" no-gutters>
@@ -74,6 +84,8 @@
 import axios from "axios";
 
 export default {
+  name: "inspire",
+
   data() {
     return {
       hottestProducts: [],
@@ -81,7 +93,8 @@ export default {
       drawer: null,
     };
   },
-  components: {},
+  components: { 
+  },
   mounted() {
     this.getHottestProducts();
     this.getCategoryAndProducts();
