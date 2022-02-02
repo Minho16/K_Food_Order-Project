@@ -1,0 +1,54 @@
+1. Set-Up 
+
+https://github.com/Minho16/Korean-Food-Order-Project.git GITHUB REMOTE URL
+
+1.1. Virtual Environment
+    - Create virtual environment ("env")
+
+1.2. Django and dependencies
+    - Install Django and other dependencies 
+        A. pip install django
+        B. pip install django-rest-framework <- (To create the API in the backend) 
+        C. pip install django-cors-headers <- (For security between API and backend)
+        D. pip install djoser <- (For authentication of users and adds some endpoints to APIs) => easy to create users, login, get token for authentication...
+        E. pip install pillow <- (To resize images and similar to python image library but easier)
+        F. pip install stripe <- It includes a pre-defined set of classes for API resources that initialize themselves dynamically from API responses which 
+                makes it compatible with a wide range of versions of the Stripe API.
+
+    - Create a new django project ("k_food_order_django")
+    - Configuration settings (installed_apps, address for the frontend, middleware and urlpatterns for djoser)
+    - Initialize the database (python manage.py migrations, etc.)
+
+1.3. Vue.js and dependencies
+    - Install vue.js
+        A. npm install -g @vue/cli
+    - Create a new vue project ("k_food_order_vue") 
+        [babel, router, vuex, CSS Pre-processors]
+        vue.js version 2.x [for vuetify]// history mode Y // Sass/SCSS (wirth dart-sass) // 
+        In dedicated config. files // Save it as a preset N
+
+
+    - Install vue's other dependencies
+        A. npm install axios (library to talk with backend)
+        B. npm install bulma // maybe not necessary for this project
+        C. vue add vuetify (default)
+
+1.4. Set up the base template (FrontEnd)
+
+    - First commmit + link it with Github
+
+
+
+2. Create Django App and models for products 
+    - Create startapp product (1st makemigrations and migrate)
+    - Create Category/Product model in models.py and settings in urls.py (2nd makemigrations and migrate)
+    - Create serializer (convert objects into datatypes understandable by JS) and views for the products
+    - Make the object to be seen in the admin interface (admin.site.register... category and product)
+    - Add products through Django admin webpage
+
+3. Create a simple Front Page (Hottest Products)
+
+4. 
+
+
+** WHEN EVERYTHING IS FINISHED => deploy the website through Netlify **
