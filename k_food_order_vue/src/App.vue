@@ -30,7 +30,7 @@
             <v-col :key="category.id" cols="12" class="black">
               <strong class="white--text">Category: {{ category.name }}</strong>
             </v-col>
-            <v-col v-for="product in category.products">
+            <v-col v-for="product in category.products" :key="product.id" cols="3">
               <v-card class="pa-2" outlined tile>
                 <!-- <v-col v-for="product in hottestProducts" v-bind:key="product.id">-->
                 <div class="box">
@@ -55,6 +55,10 @@
         </v-row>
       </v-container>
     </v-main>
+
+
+
+
     <v-footer color="primary lighten-1" padless>
       <v-row justify="center" no-gutters>
         <v-col class="black lighten-1 py-4 text-center white--text" cols="12">
@@ -74,6 +78,7 @@ export default {
     return {
       hottestProducts: [],
       CategoryAndProducts: [],
+      drawer: null,
     };
   },
   components: {},
