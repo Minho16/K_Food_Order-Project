@@ -2,13 +2,13 @@
   <v-app id="inspire">
     <v-app-bar app>
       <v-tabs align-with-title>
-        <v-tab> <v-icon> mdi-book-open</v-icon> All </v-tab>
-        <v-tab> <v-icon> mdi-noodles</v-icon> Noodles </v-tab>
-        <v-tab> <v-icon> mdi-rice</v-icon> Rice </v-tab>
-        <v-tab> <v-icon> mdi-food-drumstick </v-icon> Meat </v-tab>
-        <v-tab> <v-icon> mdi-beer </v-icon> Drinks </v-tab>
-        <v-tab> <v-icon> mdi-ice-cream </v-icon> Desserts </v-tab>
-        <v-tab> <v-icon> mdi-fire </v-icon> Hottest Products </v-tab>
+        <v-tab @click="getCategoryAndProducts()"> <v-icon> mdi-book-open</v-icon> All </v-tab>
+        <v-tab @click="getOneCategoryAndProducts('noodles')" > <v-icon> mdi-noodles</v-icon> Noodles </v-tab>
+        <v-tab @click="getOneCategoryAndProducts('rice')"> <v-icon> mdi-rice</v-icon> Rice </v-tab>
+        <v-tab @click="getOneCategoryAndProducts('meat')"> <v-icon> mdi-food-drumstick </v-icon> Meat </v-tab>
+        <v-tab @click="getOneCategoryAndProducts('drinks')"> <v-icon> mdi-beer </v-icon> Drinks </v-tab>
+        <v-tab @click="getOneCategoryAndProducts('desserts')"> <v-icon> mdi-ice-cream </v-icon> Desserts </v-tab>
+        <v-tab @click="getHottestProducts()"> <v-icon> mdi-fire </v-icon> Hottest Products </v-tab>
 
         <v-spacer></v-spacer>
 
@@ -88,38 +88,54 @@ export default {
 
   data() {
     return {
-      hottestProducts: [],
+      responseList: [],
       CategoryAndProducts: [],
+      OneCategoryAndProducts: [],
       drawer: null,
+      category: 'all',
     };
   },
   components: { 
   },
   mounted() {
-    this.getHottestProducts();
     this.getCategoryAndProducts();
+    this.getHottestProducts();
+    this.getOneCategoryAndProducts();
   },
   methods: {
-    getHottestProducts() {
-      axios
-        .get("/api/v1/hottest-products/")
-        .then((response) => {
-          this.hottestProducts = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     getCategoryAndProducts() {
       axios
-        .get("/api/v1/products/all/")
+        .get("/api/products/all/")
         .then((response) => {
-          this.CategoryAndProducts = response.data;
+          this.CategoryAndProducts = response.data;        
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    getHottestProducts() {
+      axios
+        .get("/api/products/hottest-products/")
+        .then((response) => {
+          this.CategoryAndProducts = response.data;
+        console.log(response.data)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getOneCategoryAndProducts(category){
+      axios
+        .get(`/api/products/${category}/`)
+        .then((response) => {
+          this.CategoryAndProducts = response.data;       
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    
+    },
+
   },
 };
 </script>

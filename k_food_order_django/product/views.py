@@ -14,19 +14,35 @@ from .serializers import ProductSerializer, CategorySerializer
 
 class HottestProductsList(APIView): # generic views built inside django
     def get(self, request, format=None):
-            products = Product.objects.all()[0:5] # the first five hottest products
-            serializer = ProductSerializer(products, many=True)
-            return Response(serializer.data)
+        products = Product.objects.all()[0:5] # the first five hottest products
+        serializer = ProductSerializer(products, many=True)
+        serial_lista2 = []
+        serial_dict = {
+            "id": "null",
+            "name": "HOTTEST PRODUCTS",
+            "products": serializer.data,
+        }        
+        serial_lista2.append(serial_dict)
+        return Response(serial_lista2)
 
 
-class CategoryList(APIView):
-        def get(self, request, format=None):
-            categories = Category.objects.all()
-            serializer = CategorySerializer(categories, many=True)
-            return Response(serializer.data)
+class AllCategoryList(APIView):
+    def get(self, request, format=None):
+        categories = Category.objects.all()
+        serializer = CategorySerializer(categories, many=True)
+        return Response(serializer.data)
 
 
-class ProductDetail(APIView):
+class CategoryDetail(APIView):
+    def get(self, request, category_slug, format=None):
+        category = Category.objects.get(slug=category_slug)
+        serializer = CategorySerializer(category)
+        serial_lista = [] 
+        serial_lista.append(serializer.data)
+        return Response(serial_lista)
+
+
+class ProductDetail(APIView): # will be used when description of each item is required
     def get_object(self, category_slug, product_slug):
         try:
             return Product.objects.filter(category__slug=category_slug).get(slug=product_slug)
@@ -37,17 +53,3 @@ class ProductDetail(APIView):
         product = self.get_object(category_slug, product_slug)
         serializer = ProductSerializer(product)
         return Response(serializer.data)
-
-
-class CategoryDetail(APIView):
-    def get_object(self, category_slug):
-        try:    
-            return Category.objects.get(slug=category_slug)
-        except Category.DoesNotExist:
-            raise Http404
-
-    def get(self, request, category_slug, format=None):
-        category = self.get_object(category_slug,)
-        serializer = CategorySerializer(category) 
-        return Response(serializer.data)
-    
