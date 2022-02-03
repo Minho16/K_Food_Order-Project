@@ -12,6 +12,9 @@ from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
 
 
+
+# Serializer structure modified to return same format of Response
+
 class HottestProductsList(APIView): # generic views built inside django
     def get(self, request, format=None):
         products = Product.objects.all()[0:5] # the first five hottest products
