@@ -167,6 +167,7 @@ export default {
         "name": product.name,
         "price": product.price,
         "quantity": 1,
+        "id": product.id,
       }
       if (this.cart.length == 0){
         this.cart.push(dict)
@@ -182,6 +183,7 @@ export default {
       if (found == false) {
         this.cart.push(dict)
       }
+      console.log(this.cart)
     },
     
     removeItemFromCart(product){
