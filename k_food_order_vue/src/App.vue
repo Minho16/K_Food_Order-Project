@@ -13,7 +13,7 @@
         <v-spacer></v-spacer>
 
         <v-tab icon> <v-icon>mdi-account </v-icon> Log In </v-tab>
-        <v-tab icon> <v-icon>mdi-credit-card-outline </v-icon> Payment </v-tab>
+        <v-tab icon> <v-icon>mdi-chef-hat </v-icon> Order({{ order.length }}) </v-tab>
         <v-tab icon @click="drawer = !drawer">
           <v-icon>mdi-cart </v-icon> Cart({{ cart.length}})
         </v-tab>
@@ -21,7 +21,35 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" right fixed temporary height="100%">
-
+      <v-list-item>
+          <v-list-item-title class="text-h6">
+            Cart Items
+          </v-list-item-title>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list dense nav>
+        <v-list-item v-for="item in cart" :key="item.name" link>
+            <v-list-item-title>{{ item.name }} - {{ item.price }} EUR x {{item.quantity}} </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    <v-divider></v-divider>
+    <v-list-item>
+        <v-list-item-title class="text-h6">
+          Total: {{ cartTotalPrice }} EUR
+        </v-list-item-title>
+    </v-list-item>
+    <v-card 
+    class="d-flex justify-center mb-6"
+    flat
+    tile>  
+    <v-btn
+      elevation="2"
+      outlined
+      raised
+      color="primary"
+      @click="orderItemsFromCart()"
+    > Order </v-btn>    
+    </v-card>
     </v-navigation-drawer>
 
     <v-main class="grey lighten-1">
@@ -92,6 +120,7 @@ export default {
       drawer: null,
       category: 'all',
       cart: [],
+      order: [],
     };
   },
   components: { 
@@ -145,7 +174,7 @@ export default {
       } 
       while (i < this.cart.length && found == false){
         if (Object.values(this.cart[i]).indexOf(product.name)>-1){
-          this.cart[i].quantity = this.cart[i].quantity + 1 
+          this.cart[i].quantity += 1 
           found = true
         }
         i ++;
@@ -164,19 +193,39 @@ export default {
       }
       while (i < this.cart.length && found == false){
         if ((Object.values(this.cart[i]).indexOf(product.name)>-1) && this.cart[i].quantity > 0){
-          this.cart[i].quantity = this.cart[i].quantity - 1 
+          this.cart[i].quantity -= 1 
           found = true
           if (this.cart[i].quantity == 0){
-            this.cart.splice(this.cart[i],1)
+            this.cart.splice(i,1)
           }
         } 
         i ++;
-      }
-      console.log(this.cart)
-      
+      }     
+    },
+    orderItemsFromCart(){
+      this.openPopUp()
+      this.order = this.cart
+      this.cart = []
     },
 
+    openPopUp(){
+      if (this.cart.length > 0) {
+        alert("Thank you! Your order request is in progress")
+      } else {
+        alert("The cart is empty, please, check again :D")
+      }
+    }
   },
+  computed: {
+    cartTotalPrice(){
+      let totalPrice = 0
+ 
+      for (let i = 0; i < this.cart.length; i++) {
+        totalPrice += this.cart[i].quantity * this.cart[i].price
+      }
+    return totalPrice.toFixed(2)  
+    } 
+  }
 };
 </script>
 
