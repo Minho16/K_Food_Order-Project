@@ -65,7 +65,7 @@ The selected items will be displayed in the drawer and will be moved into Order 
 
 <br />
 
-Below dependencies are installed for the app:
+# Below dependencies are installed for the app:
 
   Backend: django
   - django
