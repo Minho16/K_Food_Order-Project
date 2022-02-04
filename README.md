@@ -10,7 +10,8 @@ The selected items will be displayed in the drawer and will be moved into Order 
 (2) Main page when the cart-drawer is open
 ![alt text](https://github.com/Minho16/K_Food_Order-Project/blob/main/image2.jpg?raw=true)
 
-How to setup
+
+**How to setup**
 
 1. Select a folder where you want to clone the code
 
@@ -52,6 +53,7 @@ How to setup
   ```
 
 9. Now the app is already running at localhost (ex: http://localhost:8080/)
+
 
 
 Below dependencies need to be installed:
