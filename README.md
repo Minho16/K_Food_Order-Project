@@ -16,39 +16,48 @@ The selected items will be displayed in the drawer and will be moved into Order 
 1. Select a folder where you want to clone the code
 
 2. Clone the code https://github.com/Minho16/K_Food_Order-Project.git
+
   ```sh
   git clone https://github.com/Minho16/K_Food_Order-Project.git
   ```
+  
 3. Go to the directory where requirements.txt is located 
+
   ```sh
   cd (...)/"your folder"/K_Food_Order-Project
   ```
 
 4. Set virtualenv in the same directory and activate it
-  ```sh
+
+```sh
   virtualenv env
   ```
-  ```sh
+
+```sh
   cd env/Scripts
   ```
-  ```sh
+
+```sh
   . activate
   ```
 
 5. Go to the directory "your folder"/K_Food_Order-Project/k_food_order_django and run server
-  ```sh
+
+```sh
   python manage.py runserver
   ```
 
 6. Open another terminal and go to "your folder"/K_Food_Order-Project/k_food_order_vue
 
 7. install npm
-  ```sh
+ 
+ ```sh
   npm install 
   ```
 
 8. run serve
-  ```sh
+ 
+ ```sh
   npm run serve
   ```
 
