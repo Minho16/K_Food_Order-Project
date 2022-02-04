@@ -1,5 +1,8 @@
 # K_Food_Order-Project
 
+![alt text](https://github.com/Minho16/K_Food_Order-Project/blob/main/K_Food_Order_Project Page.jpg?raw=true)
+
+
 This is a web application that allows the users to add dishes into the cart by clicking the plus/minus buttons below each item.
 The selected items will be displayed in the drawer and will be moved into Order list when the order button is clicked. 
 
