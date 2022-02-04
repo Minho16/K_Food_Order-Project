@@ -86,6 +86,7 @@
                       <v-btn class="mx-2" fab dark small color="primary">
                         <v-icon dark @click="removeItemFromCart(product)"> mdi-minus </v-icon>
                       </v-btn>
+                      <strong> {{ returnCartItemQty(product.name) }} </strong>
                       <v-btn class="mx-2" fab dark small color="indigo">
                         <v-icon dark @click="addItemIntoCart(product)"> mdi-plus </v-icon>
                       </v-btn>
@@ -183,7 +184,6 @@ export default {
       if (found == false) {
         this.cart.push(dict)
       }
-      console.log(this.cart)
     },
     
     removeItemFromCart(product){
@@ -216,7 +216,21 @@ export default {
       } else {
         alert("The cart is empty, please, check again :D")
       }
-    }
+    },
+    
+    returnCartItemQty(name){
+    var Qty_Selected = 0
+      for (let i = 0; i < this.cart.length; i++){
+        if (name == this.cart[i].name){
+          Qty_Selected = this.cart[i].quantity
+          break
+        } 
+        else {
+          Qty_Selected = 0
+        }
+      }
+    return Qty_Selected
+        }
   },
   computed: {
     cartTotalPrice(){
@@ -226,7 +240,7 @@ export default {
         totalPrice += this.cart[i].quantity * this.cart[i].price
       }
     return totalPrice.toFixed(2)  
-    } 
+    },  
   }
 };
 </script>
