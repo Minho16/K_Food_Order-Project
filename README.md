@@ -11,23 +11,23 @@ The selected items will be displayed in the drawer and will be moved into Order 
 ![alt text](https://github.com/Minho16/K_Food_Order-Project/blob/main/image2.jpg?raw=true)
 
 
-**How to setup**
+#**How to setup**
 
-1. Select a folder where you want to clone the code
+## 1. Select a folder where you want to clone the code
 
-2. Clone the code https://github.com/Minho16/K_Food_Order-Project.git
+## 2. Clone the code https://github.com/Minho16/K_Food_Order-Project.git
 
   ```sh
   git clone https://github.com/Minho16/K_Food_Order-Project.git
   ```
   
-3. Go to the directory where requirements.txt is located 
+## 3. Go to the directory where requirements.txt is located 
 
   ```sh
   cd (...)/"your folder"/K_Food_Order-Project
   ```
 
-4. Set virtualenv in the same directory and activate it
+## 4. Set virtualenv in the same directory and activate it
 
 ```sh
   virtualenv env
@@ -41,31 +41,31 @@ The selected items will be displayed in the drawer and will be moved into Order 
   . activate
   ```
 
-5. Go to the directory "your folder"/K_Food_Order-Project/k_food_order_django and run server
+## 5. Go to the directory "your folder"/K_Food_Order-Project/k_food_order_django and run server
 
 ```sh
   python manage.py runserver
   ```
 
-6. Open another terminal and go to "your folder"/K_Food_Order-Project/k_food_order_vue
+## 6. Open another terminal and go to "your folder"/K_Food_Order-Project/k_food_order_vue
 
-7. install npm
+## 7. install npm
  
  ```sh
   npm install 
   ```
 
-8. run serve
+## 8. run serve
  
  ```sh
   npm run serve
   ```
 
-9. Now the app is already running at localhost (ex: http://localhost:8080/)
+## 9. Now the app is already running at localhost (ex: http://localhost:8080/)
 
+<br />
 
-
-Below dependencies need to be installed:
+Below dependencies are installed for the app:
 
   Backend: django
   - django
@@ -79,7 +79,7 @@ Below dependencies need to be installed:
    - axios
    - vuetify
 
-Need to be improved: 
+## **Need to be improved**: 
  - Increase the ordered_number of the items that are ordered(purchased) by API 'POST'
  - Sign Up and Log In
  - Combine cart state & log-in 
