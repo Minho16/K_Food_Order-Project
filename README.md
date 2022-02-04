@@ -11,7 +11,7 @@ The selected items will be displayed in the drawer and will be moved into Order 
 ![alt text](https://github.com/Minho16/K_Food_Order-Project/blob/main/image2.jpg?raw=true)
 
 
-#**How to setup**
+# How to setup
 
 ## 1. Select a folder where you want to clone the code
 
@@ -79,7 +79,7 @@ Below dependencies are installed for the app:
    - axios
    - vuetify
 
-## **Need to be improved**: 
+# Need to be improved: 
  - Increase the ordered_number of the items that are ordered(purchased) by API 'POST'
  - Sign Up and Log In
  - Combine cart state & log-in 
