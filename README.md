@@ -4,9 +4,10 @@
 This is a web application that allows the users to search dishes by categories, add items into the cart by clicking the plus/minus buttons below each image.
 The selected items will be displayed in the drawer and will be moved into Order list when the order button is clicked. 
 
-
+(1) Main page with all items shown
 ![alt text](https://github.com/Minho16/K_Food_Order-Project/blob/main/image.jpg?raw=true)
 
+(2) Main page when the cart-drawer is open
 ![alt text](https://github.com/Minho16/K_Food_Order-Project/blob/main/image2.jpg?raw=true)
 
 Below dependencies need to be installed:
