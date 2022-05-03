@@ -20,14 +20,8 @@ The selected items will be displayed in the drawer and will be moved into Order 
   ```sh
   git clone https://github.com/Minho16/K_Food_Order-Project.git
   ```
-  
-## 3. Go to the directory where requirements.txt is located 
-
-  ```sh
-  cd (...)/"your folder"/K_Food_Order-Project
-  ```
-
-## 4. Set virtualenv in the same directory and activate it
+ 
+## 3. Set virtualenv and activate it
 
 ```sh
   virtualenv env
@@ -40,6 +34,15 @@ The selected items will be displayed in the drawer and will be moved into Order 
 ```sh
   . activate
   ```
+
+## 4. Install all the requirements
+
+  
+ ```sh
+ pip install -r /path/to/requirements.txt
+  ```
+
+
 
 ## 5. Go to the directory "your folder"/K_Food_Order-Project/k_food_order_django and run server
 
